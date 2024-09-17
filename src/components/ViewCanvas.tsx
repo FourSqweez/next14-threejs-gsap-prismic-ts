@@ -2,6 +2,8 @@
 
 import { Canvas } from "@react-three/fiber";
 
+import { View } from "@react-three/drei";
+
 type Props = {};
 
 export default function ViewCanvas({}: Props) {
@@ -23,13 +25,7 @@ export default function ViewCanvas({}: Props) {
         fov: 30,
       }}
     >
-      {/* Math.PI * 2 2Pi */}
-      <mesh rotation={[0.5, 0.5, 0]} position={[1, 0, 0]}>
-        <boxGeometry />
-        <meshStandardMaterial color={"hotpink"} />
-      </mesh>
-      <ambientLight intensity={2} />
-      <spotLight intensity={3} position={[1, 1, 1]} />
+      <View.Port />
     </Canvas>
   );
 }
