@@ -49,6 +49,18 @@ export default function Scene({}: Props) {
     gsap.set(can3Ref.current.position, { y: 5, z: 2 });
     gsap.set(can4Ref.current.position, { x: 2, y: 4, z: 2 });
     gsap.set(can5Ref.current.position, { y: -5 });
+
+    const introTl = gsap.timeline({
+      defaults: {
+        duration: 3,
+        ease: "back.out(1.4)",
+      },
+    });
+    introTl
+      .from(can1GroupRef.current.position, { y: -5, x: 1 }, 0)
+      .from(can1GroupRef.current.rotation, { z: 3 }, 0)
+      .from(can2GroupRef.current.position, { y: 5, x: 1 }, 0)
+      .from(can2GroupRef.current.rotation, { z: 3 }, 0);
   }, []);
 
   return (
@@ -79,7 +91,7 @@ export default function Scene({}: Props) {
 
       <FloatingCan ref={can5Ref} flavor="watermelon" floatSpeed={FLOAT_SPEED} />
 
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <Environment files={"/hdr/lobby.hdr"} environmentIntensity={1.5} />
     </group>
   );
