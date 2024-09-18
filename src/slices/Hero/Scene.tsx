@@ -8,12 +8,15 @@ import useRefs from "react-use-refs";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import FloatingCan from "@/components/FloatingCan";
+import { useStore } from "@/hooks/useStore";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type Props = {};
 
 export default function Scene({}: Props) {
+  const isReady = useStore((state) => state.isReady);
+
   const [
     can1Ref,
     can2Ref,
@@ -39,6 +42,8 @@ export default function Scene({}: Props) {
       !groupRef.current
     )
       return;
+
+    isReady();
 
     // Set can starting location
     gsap.set(can1Ref.current.position, { x: -1.5 });
