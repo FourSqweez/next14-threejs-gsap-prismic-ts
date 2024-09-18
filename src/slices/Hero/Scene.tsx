@@ -1,6 +1,6 @@
 "use client";
 
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -79,6 +79,7 @@ export default function Scene({}: Props) {
 
       <FloatingCan ref={can5Ref} flavor="watermelon" floatSpeed={FLOAT_SPEED} />
 
+      <OrbitControls />
       <Environment files={"/hdr/lobby.hdr"} environmentIntensity={1.5} />
     </group>
   );
