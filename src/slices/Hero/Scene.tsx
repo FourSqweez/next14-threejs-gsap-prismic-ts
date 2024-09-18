@@ -1,27 +1,28 @@
 "use client";
 
-import FloatingCan from "@/components/FloatingCan";
 import { Environment } from "@react-three/drei";
-import { useRef } from "react";
 import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import useRefs from "react-use-refs";
+
+import FloatingCan from "@/components/FloatingCan";
 
 gsap.registerPlugin(useGSAP);
 
 type Props = {};
 
 export default function Scene({}: Props) {
-  const can1Ref = useRef<Group>(null);
-  const can2Ref = useRef<Group>(null);
-  const can3Ref = useRef<Group>(null);
-  const can4Ref = useRef<Group>(null);
-  const can5Ref = useRef<Group>(null);
-
-  const can1GroupRef = useRef<Group>(null);
-  const can2GroupRef = useRef<Group>(null);
-
-  const groupRef = useRef<Group>(null);
+  const [
+    can1Ref,
+    can2Ref,
+    can3Ref,
+    can4Ref,
+    can5Ref,
+    can1GroupRef,
+    can2GroupRef,
+    groupRef,
+  ] = useRefs<Group>(null);
 
   const FLOAT_SPEED = 1.5;
 
